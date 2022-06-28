@@ -291,7 +291,7 @@ public class NewFiguraNetworkManager implements IFiguraNetwork {
     public String mainServerURL() {
         if ((boolean) Config.USE_LOCAL_SERVER.value)
             return "http://localhost:6050";
-        return "https://" + Config.BACKEND_PATH.value;
+        return "http://" + Config.BACKEND_PATH.value + ":6050";
     }
 
     private static boolean localLastCheck = false;
@@ -300,7 +300,7 @@ public class NewFiguraNetworkManager implements IFiguraNetwork {
     public CompletableFuture<Void> ensureConnection() {
 
         if (localLastCheck != (boolean) Config.USE_LOCAL_SERVER.value || socketFactory == null) {
-            localLastCheck = (boolean) Config.USE_LOCAL_SERVER.value;
+            localLastCheck = true; //(boolean) Config.USE_LOCAL_SERVER.value;
 
             socketFactory = new WebSocketFactory();
 
