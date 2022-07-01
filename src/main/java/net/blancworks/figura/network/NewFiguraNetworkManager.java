@@ -284,14 +284,14 @@ public class NewFiguraNetworkManager implements IFiguraNetwork {
     public String authServerURL() {
         if ((boolean) Config.USE_LOCAL_SERVER.value)
             return "localhost";
-        return (String) Config.BACKEND_PATH.value;
+        return ((String) Config.BACKEND_AUTH_ADDRESS.value);
     }
 
     //Main server for distributing files URL
     public String mainServerURL() {
         if ((boolean) Config.USE_LOCAL_SERVER.value)
             return "http://localhost:6050";
-        return "https://" + Config.BACKEND_PATH.value;
+        return (String) Config.BACKEND_PATH.value;
     }
 
     private static boolean localLastCheck = false;
@@ -300,7 +300,7 @@ public class NewFiguraNetworkManager implements IFiguraNetwork {
     public CompletableFuture<Void> ensureConnection() {
 
         if (localLastCheck != (boolean) Config.USE_LOCAL_SERVER.value || socketFactory == null) {
-            localLastCheck = (boolean) Config.USE_LOCAL_SERVER.value;
+            localLastCheck = (boolean) Config.USE_LOCAL_SERVER.value || !((boolean) Config.VERIFY_SSL.value);
 
             socketFactory = new WebSocketFactory();
 

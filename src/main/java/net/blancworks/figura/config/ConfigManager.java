@@ -114,7 +114,9 @@ public final class ConfigManager {
                     new TranslatableText(path + "4")
             );
         }},
-        BACKEND_PATH("figuranew.blancworks.org", InputType.ANY);
+        BACKEND_PATH("https://figuranew.blancworks.org", InputType.ANY),
+        VERIFY_SSL(false),
+        BACKEND_AUTH_ADDRESS("figuranew.blancworks.org:25565", InputType.ANY);
 
         //config data
         public Object value;
