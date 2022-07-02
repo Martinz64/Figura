@@ -393,7 +393,7 @@ public class NewFiguraNetworkManager implements IFiguraNetwork {
             connectionStatus = 2;
 
             String address = authServerURL();
-            InetSocketAddress inetAddress = new InetSocketAddress(address, 25565);
+            InetSocketAddress inetAddress = new InetSocketAddress(address, (int)Config.BACKEND_AUTH_PORT.value);
 
             //Create new connection
             ClientConnection connection = ClientConnection.connect(inetAddress, true);
