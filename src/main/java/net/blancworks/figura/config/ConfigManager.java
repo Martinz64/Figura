@@ -111,8 +111,10 @@ public final class ConfigManager {
                     MutableText.of(new TranslatableTextContent(path + "4"))
             );
         }},
-        BACKEND_PATH("figuranew.blancworks.org", InputType.ANY);
-
+        BACKEND_PATH("https://figuranew.blancworks.org", InputType.ANY),
+        VERIFY_SSL(false),
+        BACKEND_AUTH_ADDRESS("figuranew.blancworks.org", InputType.ANY),
+        BACKEND_AUTH_PORT(25565, InputType.INT);
         //config data
         public Object value;
         public Object configValue;
